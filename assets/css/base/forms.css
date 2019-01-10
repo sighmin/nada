@@ -2,3 +2,22 @@ button,
 select {
   cursor: pointer;
 }
+
+.button {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+  border: 2px solid var(--color-outline);
+  text-align: center;
+  padding: 5px 0;
+  margin-bottom: 1rem;
+}
+
+.button:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.actions {
+  text-align: center;
+}

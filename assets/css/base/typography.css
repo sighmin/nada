@@ -4,3 +4,10 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 }
+
+a {
+  color: var(--color-grey);
+}
+a:hover {
+  color: var(--color-black);
+}

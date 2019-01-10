@@ -1,16 +1,11 @@
 :root {
-  /* Breakpoints */
-  --breakpoint-x-small: 25em;
-  --breakpoint-small: 40em;
-  --breakpoint-medium: 55em;
-  --breakpoint-large: 65em;
-
   /* Font stacks */
-  --font-family-base: var(--font-stack-georgia);
-  --font-family-sans: var(--font-stack-system);
+  --font-family-base: 'Hind', sans-serif;
 
   /* Font weights */
+  --font-weight-light: 300;
   --font-weight-normal: 400;
+  --font-weight-medium: 500;
   --font-weight-bold: 700;
 
   /* Line heights */
@@ -22,8 +17,8 @@
   --font-size-xx-small: rem(10px);
   --font-size-x-small: rem(12px);
   --font-size-small: rem(14px);
-  --font-size-base: rem(var(--font-size-global));
-  --font-size-base-plus: rem(20px);
+  --font-size-base: rem(16px);
+  --font-size-base-plus: rem(18px);
   --font-size-medium: rem(28px);
   --font-size-large: rem(36px);
   --font-size-x-large: rem(48px);
@@ -37,10 +32,11 @@
   --spacing-x-large: var(--spacing-base) * 4;
 
   /* Colors */
-  --color-offblack: #333;
-  --color-gray: #5c5c5c;
-  --color-offwhite: #fdfdfc;
-  --color-text: var(--color-offblack);
+  --color-black: #313131;
+  --color-white: #fff;
+  --color-grey: #646464;
+  --color-text: var(--color-black);
+  --color-outline: var(--color-black);
 
   /* Borders */
   --border-radius-base: 3px;

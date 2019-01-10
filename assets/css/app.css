@@ -5,5 +5,8 @@
 /* Base */
 @import "./base/base.css";
 
+/* Pages, Components, Modules */
+@import "./modules/landing.css";
+
 /* Phoenix styling */
 @import "./phoenix.css";

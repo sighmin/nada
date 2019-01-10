@@ -1,7 +1,10 @@
-<section>
-  <h1 class="title">nada</h1>
-  <p>"login with nothing"</p>
-  <p>Get started by logging in or creating an account.<p>
-  <%= link "Login", to: Routes.session_path(@conn, :new) %>
-<section>
-<%= link "Create an account", to: Routes.registration_path(@conn, :new) %>
+<section class="brand">
+  <header class="dialog">
+    <h1 class="title">nada</h1>
+    <p class="slogan">"login with nothing"</p>
+  </header>
+  <div class="actions">
+    <%= link "Login", to: Routes.session_path(@conn, :new), class: 'button' %>
+    <%= link "Create an account", to: Routes.registration_path(@conn, :new) %>
+  </div>
+</section>

@@ -1,15 +1,8 @@
-/* For example:
-
-ul,
-ol {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+/* Main Header */
+header.main-nav {
+  height: 60px;
 }
 
-dl,
-dt,
-dd {
-  margin: 0;
+section {
+  margin: 0 3rem;
 }
-*/

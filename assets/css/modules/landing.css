@@ -1,0 +1,15 @@
+.dialog {
+  min-height: 12rem;
+}
+
+.brand .title {
+  margin-bottom: 0;
+}
+.brand .slogan {
+  margin-top: 0;
+  font-style: italic;
+  font-size: 18px;
+}
+.brand .actions {
+  padding-top: 38px;
+}
