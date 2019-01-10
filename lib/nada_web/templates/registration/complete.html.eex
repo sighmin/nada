@@ -1,5 +1,9 @@
 <section>
-  <h2>Nice! You've completed your account.</h3>
-  <p>Now you can login with your face.</p>
-  <%= link "Login", to: Routes.session_path(@conn, :new) %>
+  <header class="dialog">
+    <h2>Nice! You've completed your account.</h3>
+  </header>
+  <div class="actions">
+    <p>Now you can login with your face.</p>
+    <%= link "Login", to: Routes.session_path(@conn, :new), class: "button" %>
+  </div>
 </section>

@@ -11,6 +11,8 @@ select {
   text-align: center;
   padding: 5px 0;
   margin-bottom: 1rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
 }
 
 .button:hover {
@@ -20,4 +22,33 @@ select {
 
 .actions {
   text-align: center;
+}
+
+input, label {
+  width: 100%;
+  padding: 5px 0;
+  margin: 1rem 0;
+  font-size: var(--font-size-base);
+}
+
+label[for="file"] {
+  display: block;
+  border: 1px dashed black;
+  padding: 10px 0;
+}
+
+input:focus {
+  outline: none;
+  background: #fafafa;
+}
+
+::placeholder {
+  color: #8c8c8c;
+}
+
+input[type="email"] {
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  padding: 14px 5px 5px 5px;
 }

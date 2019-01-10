@@ -1,6 +1,10 @@
 <section>
-  <h2>Nice! You're authenticated!</h2>
-  <p>But this app actually doesn't do anything... so... this is awkward.
-  <!-- change me to a paragraph -->
-  <a href="/">Logout</a>
+  <header class="dialog">
+    <h2>Nice! You're authenticated!</h2>
+  </header>
+  <div class="actions">
+    <p>But this app actually doesn't do anything... so... this is awkward.
+    <!-- change me to a paragraph -->
+    <a href="/">Logout</a>
+  </div>
 </section>

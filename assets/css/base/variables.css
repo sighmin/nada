@@ -13,12 +13,12 @@
   --line-height-tight: 1;
 
   /* Font sizes */
-  --font-size-global: 16px;
+  --font-size-global: 18px;
   --font-size-xx-small: rem(10px);
   --font-size-x-small: rem(12px);
   --font-size-small: rem(14px);
-  --font-size-base: rem(16px);
-  --font-size-base-plus: rem(18px);
+  --font-size-base: rem(18px);
+  --font-size-base-plus: rem(20px);
   --font-size-medium: rem(28px);
   --font-size-large: rem(36px);
   --font-size-x-large: rem(48px);

@@ -1,5 +1,9 @@
 <section>
-  <h2>Last step, please confirm your email.</h2>
-  <!-- change me to a paragraph -->
-  <a href="/register/complete">No need to come back here.</a>
+  <header class="dialog">
+    <h2>Last step, please confirm your email.</h2>
+  </header>
+  <div class="actions">
+    <!-- change me to a paragraph -->
+    <a href="/register/complete">No need to come back here.</a>
+  </div>
 </section>
