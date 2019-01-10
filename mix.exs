@@ -44,6 +44,8 @@ defmodule Nada.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
+      {:wallaby, "~> 0.21.0", [runtime: false, only: :test]},
+      {:ex_machina, "~> 2.2", [runtime: false, only: :test]},
     ]
   end
 

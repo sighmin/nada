@@ -1,0 +1,7 @@
+<section>
+  <h2>You're looking grand, take a selfie.</h2>
+  <form action="<%= Routes.session_path(@conn, :face_id)%>" method="get">
+    <input type="file" placeholder="Choose a photo or take a selfie" />
+    <input type="submit" value="Capture my face" />
+  </form>
+</section>

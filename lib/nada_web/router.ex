@@ -17,6 +17,17 @@ defmodule NadaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/register", RegistrationController, :new
+    get "/register/confirm", RegistrationController, :confirm
+    get "/register/complete", RegistrationController, :complete
+
+    get "/login", SessionController, :new
+    get "/login/face", SessionController, :face_id
+    get "/login/email", SessionController, :email_found
+    get "/login/confirm", SessionController, :confirm
+
+    get "/nothing", NothingController, :index
   end
 
   # Other scopes may use custom stacks.

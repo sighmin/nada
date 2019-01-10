@@ -1,0 +1,7 @@
+<section>
+  <h2>We found you! Please confirm your email.</h2>
+  <form action="<%= Routes.session_path(@conn, :confirm)%>" method="get">
+    <input type="email" placeholder="your@email.com" />
+    <input type="submit" value="Yup, that's mine" />
+  </form>
+</section>

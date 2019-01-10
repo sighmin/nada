@@ -1,0 +1,7 @@
+<section>
+  <h2>We're looking you up from your face...</h2>
+  <%= link to: Routes.session_path(@conn, :email_found) do %>
+    <span style="width: 4rem; height: 4rem; border-radius: 50%; background: gray;"></span>
+    <p>Processing</p>
+  <% end %>
+</section>
