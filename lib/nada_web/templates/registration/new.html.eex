@@ -6,7 +6,7 @@
     <form action="<%= Routes.registration_path(@conn, :confirm) %>" method="get">
       <input type="email" placeholder="Email" />
       <label for="file">Choose a photo from your library</label>
-      <input type="file" id="file" hidden=true />
+      <input type="file" id="file" />
       <input type="submit" value="Create my account" class="button" />
     </form>
   </div>

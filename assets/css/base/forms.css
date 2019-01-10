@@ -52,3 +52,13 @@ input[type="email"] {
   font-size: 18px;
   padding: 14px 5px 5px 5px;
 }
+
+input[type="file"] {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
