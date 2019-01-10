@@ -1,10 +1,6 @@
 defmodule NadaWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :nada
 
-  if Application.get_env(:nada, :sql_sandbox) do
-    plug Phoenix.Ecto.SQL.Sandbox
-  end
-
   socket "/socket", NadaWeb.UserSocket,
     websocket: true,
     longpoll: false

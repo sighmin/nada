@@ -24,14 +24,4 @@ defmodule NadaWeb.ChannelCase do
       @endpoint NadaWeb.Endpoint
     end
   end
-
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Nada.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Nada.Repo, {:shared, self()})
-    end
-
-    :ok
-  end
 end

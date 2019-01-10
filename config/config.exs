@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :nada,
-  ecto_repos: [Nada.Repo]
-
 # Configures the endpoint
 config :nada, NadaWeb.Endpoint,
   url: [host: "localhost"],

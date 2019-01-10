@@ -10,11 +10,3 @@ config :nada, :sql_sandbox, true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :nada, Nada.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "nada_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
