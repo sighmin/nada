@@ -1,0 +1,52 @@
+:root {
+  /* Breakpoints */
+  --breakpoint-x-small: 25em;
+  --breakpoint-small: 40em;
+  --breakpoint-medium: 55em;
+  --breakpoint-large: 65em;
+
+  /* Font stacks */
+  --font-family-base: var(--font-stack-georgia);
+  --font-family-sans: var(--font-stack-system);
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-base: 1.5;
+  --line-height-tight: 1;
+
+  /* Font sizes */
+  --font-size-global: 16px;
+  --font-size-xx-small: rem(10px);
+  --font-size-x-small: rem(12px);
+  --font-size-small: rem(14px);
+  --font-size-base: rem(var(--font-size-global));
+  --font-size-base-plus: rem(20px);
+  --font-size-medium: rem(28px);
+  --font-size-large: rem(36px);
+  --font-size-x-large: rem(48px);
+
+  /* Spacing */
+  --spacing-base: 1rem;
+  --spacing-x-small: var(--spacing-base) / 4;
+  --spacing-small: var(--spacing-base) / 2;
+  --spacing-medium: var(--spacing-base) * 1.5;
+  --spacing-large: var(--spacing-base) * 2;
+  --spacing-x-large: var(--spacing-base) * 4;
+
+  /* Colors */
+  --color-offblack: #333;
+  --color-gray: #5c5c5c;
+  --color-offwhite: #fdfdfc;
+  --color-text: var(--color-offblack);
+
+  /* Borders */
+  --border-radius-base: 3px;
+  --border-radius-circle: 50%;
+
+  /* Transitions */
+  --transition-base: 0.2s ease-in-out all;
+}
+

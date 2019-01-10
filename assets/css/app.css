@@ -1,3 +1,9 @@
-/* This file is for your main application css. */
+/* Reset */
+@import "./reset/layout.css";
+@import "./reset/normalize.css";
 
+/* Base */
+@import "./base/base.css";
+
+/* Phoenix styling */
 @import "./phoenix.css";
