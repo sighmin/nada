@@ -1,10 +1,13 @@
 <section>
+  <%= render NadaWeb.SharedView, "logo.html", assigns %>
   <header class="dialog">
     <h2>Nice! You're authenticated!</h2>
   </header>
-  <div class="actions">
+  <div class="actions nothing-alert">
     <p>But this app actually doesn't do anything... so... this is awkward.
     <!-- change me to a paragraph -->
+    <br>
+    <br>
     <a href="/">Logout</a>
   </div>
 </section>

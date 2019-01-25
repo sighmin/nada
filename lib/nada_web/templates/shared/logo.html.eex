@@ -1,0 +1,7 @@
+<nav class="nav-logo" role="navigation">
+  <%= if !assigns[:hide_navigation] do %>
+    <%= link to: Routes.page_path(@conn, :index) do %>
+    <img class="logo" src="<%= Routes.static_path(@conn, "/images/nada-logo.png") %>" alt="nada logo" />
+    <% end %>
+  <% end %>
+</nav>

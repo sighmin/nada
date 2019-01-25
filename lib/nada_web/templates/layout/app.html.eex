@@ -9,11 +9,6 @@
   </head>
   <body>
     <header class="main-nav">
-      <nav role="navigation">
-        <%= if !assigns[:hide_navigation] do %>
-          <%= link "nada", to: Routes.page_path(@conn, :index) %>
-        <% end %>
-      </nav>
     </header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
