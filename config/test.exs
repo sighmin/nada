@@ -16,5 +16,5 @@ config :wallaby,
   driver: Wallaby.Experimental.Chrome
 
 # Configure email
-#config :nada, Nada.Mailer,
-  #adapter: Bamboo.TestAdapter
+config :nada, Nada.Mailer,
+  adapter: Bamboo.TestAdapter
