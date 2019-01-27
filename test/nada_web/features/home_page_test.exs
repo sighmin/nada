@@ -4,6 +4,6 @@ defmodule NadaWeb.HomePageTest do
   test "visiting the home page", %{session: session} do
     session
     |> visit("/")
-    |> assert_has(css(".title", text: "nada"))
+    |> assert_has(css(".slogan", text: "login with nothing"))
   end
 end
