@@ -5,8 +5,11 @@
   </header>
   <div class="actions">
     <form action="<%= Routes.session_path(@conn, :face_id)%>" method="get">
-      <input type="file" placeholder="Choose a photo or take a selfie" />
-      <input type="submit" value="Capture my face" class="button" />
+      <label for="file" accept="image/*" capture="user">
+        Take a selfie / Choose a photo
+      </label>
+      <input type="file" id="file" />
+      <input type="submit" value="Upload" class="button" />
     </form>
   </div>
 </section>

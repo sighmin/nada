@@ -10,10 +10,10 @@ header.main-nav {
 
 section {
   max-width: 400px;
-  min-height: 500px;
+  min-height: 570px;
   margin: auto;
   border: 1px solid black;
-  padding: 3em;
+  padding: 3rem;
   border-radius: 3px;
   background-image: url("/images/nada-background-desktop.png");
   background-size: cover;
@@ -25,7 +25,7 @@ section {
   width: 50%;
 }
 .dialog {
-  margin-top: 3em;
+  margin-top: 3rem;
 }
 
 footer {

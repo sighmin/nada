@@ -1,5 +1,6 @@
 button,
-select {
+select,
+.button {
   cursor: pointer;
 }
 
@@ -10,13 +11,14 @@ select {
   border: 2px solid var(--color-outline);
   text-align: center;
   padding: 5px 0;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-base);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+  transition: var(--transition-base);
 }
 
 .button:hover {
-  background: var(--color-black);
+  background: var(--color-white-reverse);
   color: var(--color-white);
 }
 
@@ -27,7 +29,7 @@ select {
 input, label {
   width: 100%;
   padding: 5px 0;
-  margin: 1rem 0;
+  margin: var(--spacing-base) 0 0 0;
   font-size: var(--font-size-base);
 }
 
@@ -39,17 +41,17 @@ label[for="file"] {
 
 input:focus {
   outline: none;
-  background: #fafafa;
+  background: var(--color-subtle-grey);
 }
 
 ::placeholder {
-  color: #8c8c8c;
+  color: var(--color-medium-grey);
 }
 
 input[type="email"] {
   border: none;
   border-bottom: 1px solid black;
-  font-size: 18px;
+  font-size: var(--font-size-base-plus);
   padding: 14px 5px 5px 5px;
 }
 
@@ -62,3 +64,6 @@ input[type="file"] {
 	z-index: -1;
 }
 
+input[type="submit"] {
+  margin-top: var(--spacing-large);
+}
