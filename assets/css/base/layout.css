@@ -49,7 +49,7 @@ footer p {
   .dialog {
     min-height: 8rem !important;
   }
-  body {
+  .body {
     background-image: url("/images/nada-background.png");
     background-size: cover;
   }
