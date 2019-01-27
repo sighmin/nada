@@ -10,3 +10,7 @@ config :nada, :sql_sandbox, true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Configure email
+#config :nada, Nada.Mailer,
+  #adapter: Bamboo.TestAdapter

@@ -73,6 +73,21 @@ config :nada, NadaWeb.Endpoint,
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
 
+# Configure email
+#config :my_app, MyApp.Mailer,
+  #adapter: Bamboo.SMTPAdapter,
+  #server: "smtp.domain",
+  #hostname: "your.domain",
+  #port: 1025,
+  #username: "your.name@your.domain", or {:system, "SMTP_USERNAME"}
+  #password: "pa55word", or {:system, "SMTP_PASSWORD"}
+  #tls: :if_available, can be `:always` or `:never`
+  #allowed_tls_versions: [:"tlsv1", :"tlsv1.1", :"tlsv1.2"], or {:system, "ALLOWED_TLS_VERSIONS"} w/ comma seprated values (e.g. "tlsv1.1,tlsv1.2")
+  #ssl: false, can be `true`
+  #retries: 1,
+  #no_mx_lookups: false, can be `true`
+  #auth: :if_available can be `always`. If your smtp relay requires authentication set it to `always`.
+
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
 import_config "prod.secret.exs"
