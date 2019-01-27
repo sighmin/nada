@@ -1,10 +1,14 @@
-/* Main Header */
+main[role="main"] {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
 header.main-nav {
   height: 60px;
 }
 
 section {
-  /* margin: 0 3rem; */
   max-width: 400px;
   min-height: 500px;
   margin: auto;
@@ -23,6 +27,19 @@ section {
 .dialog {
   margin-top: 3em;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
+  padding: 10px 0;
+}
+footer p {
+  color: var(--color-grey);
+  margin: 0 auto;
+}
+
 @media only screen and (max-width: 475px) {
   section {
     border: none;
