@@ -1,4 +1,5 @@
 <section>
+  <%= render NadaWeb.SharedView, "logo.html", assigns %>
   <header class="dialog">
     <h2>We're looking you up from your face...</h2>
   </header>

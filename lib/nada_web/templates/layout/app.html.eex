@@ -8,19 +8,13 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
-    <header class="main-nav">
-      <nav role="navigation">
-        <%= if !assigns[:hide_navigation] do %>
-          <%= link "nada", to: Routes.page_path(@conn, :index) %>
-        <% end %>
-      </nav>
-    </header>
-    <main role="main" class="container">
+    <main role="main">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
     <footer>
+      <p>Coded with ♡</p><p>Simon and Miles @ <a href="https://thoughtbot.co.uk/">thoughtbot</a></p>
     </footer>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>

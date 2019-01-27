@@ -1,8 +1,59 @@
-/* Main Header */
+main[role="main"] {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
 header.main-nav {
   height: 60px;
 }
 
 section {
-  margin: 0 3rem;
+  max-width: 400px;
+  min-height: 570px;
+  margin: auto;
+  border: 1px solid black;
+  padding: 3rem;
+  border-radius: 3px;
+  background-image: url("/images/nada-background-desktop.png");
+  background-size: cover;
+}
+.logo {
+  width: 25%;
+}
+.logo-landing {
+  width: 50%;
+}
+.dialog {
+  margin-top: 3rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
+  padding: 10px 0;
+}
+footer p {
+  color: var(--color-grey);
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 475px) {
+  section {
+    border: none;
+    background-image: none;
+  }
+  .dialog {
+    min-height: 8rem !important;
+  }
+  body {
+    background-image: url("/images/nada-background.png");
+    background-size: cover;
+  }
+  .nav-logo {
+    margin-top: -50px;
+    padding-bottom: 50px;
+  }
 }
