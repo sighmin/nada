@@ -1,6 +1,5 @@
 <section class="brand">
   <header class="dialog">
-    <%# <h1 class="title">nada</h1> %>
     <img class="logo-landing" src="<%= Routes.static_path(@conn, "/images/nada-logo.png") %>" alt="nada logo"/>
     <p class="slogan">"login with nothing"</p>
   </header>
