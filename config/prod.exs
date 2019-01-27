@@ -73,6 +73,21 @@ config :nada, NadaWeb.Endpoint,
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
 
+# Configure email
+config :nada, Nada.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.gmail.com",
+  hostname: "gmail.com",
+  port: 587,
+  username: System.get_env("SMTP_USERNAME"),
+  password: System.get_env("SMTP_PASSWORD"),
+  tls: :if_available,
+  allowed_tls_versions: [:"tlsv1", :"tlsv1.1", :"tlsv1.2"],
+  ssl: true,
+  retries: 1,
+  no_mx_lookups: false,
+  auth: :always,
+
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
 import_config "prod.secret.exs"

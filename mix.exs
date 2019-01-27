@@ -10,7 +10,7 @@ defmodule Nada.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
     ]
   end
 
@@ -20,7 +20,12 @@ defmodule Nada.MixProject do
   def application do
     [
       mod: {Nada.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :bamboo,
+        :bamboo_smtp,
+      ],
     ]
   end
 
@@ -44,6 +49,8 @@ defmodule Nada.MixProject do
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
       {:wallaby, "~> 0.21.0", [runtime: false, only: :test]},
       {:ex_machina, "~> 2.2", [runtime: false, only: :test]},
+      {:bamboo, "~> 1.1"},
+      {:bamboo_smtp, "~> 1.6.0"},
     ]
   end
 

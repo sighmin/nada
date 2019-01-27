@@ -1,6 +1,11 @@
 defmodule NadaWeb.Router do
   use NadaWeb, :router
 
+  if Mix.env == :dev do
+    # If using Phoenix
+    forward "/sent_emails", Bamboo.SentEmailViewerPlug
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -19,6 +24,7 @@ defmodule NadaWeb.Router do
     get "/", PageController, :index
 
     get "/register", RegistrationController, :new
+    post "/register", RegistrationController, :create
     get "/register/confirm", RegistrationController, :confirm
     get "/register/complete", RegistrationController, :complete
 

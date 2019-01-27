@@ -10,3 +10,11 @@ config :nada, :sql_sandbox, true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Configure feature test driver
+config :wallaby,
+  driver: Wallaby.Experimental.Chrome
+
+# Configure email
+config :nada, Nada.Mailer,
+  adapter: Bamboo.TestAdapter

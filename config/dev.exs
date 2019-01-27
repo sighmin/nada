@@ -66,6 +66,10 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
+# Configure email
+#config :nada, Nada.Mailer,
+  #adapter: Bamboo.LocalAdapter
+
 # Configure your database
 #config :nada, Nada.Repo,
   #username: "postgres",

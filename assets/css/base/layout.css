@@ -38,6 +38,7 @@ footer {
 footer p {
   color: var(--color-grey);
   margin: 0 auto;
+  font-size: var(--font-size-small);
 }
 
 @media only screen and (max-width: 475px) {
@@ -48,12 +49,15 @@ footer p {
   .dialog {
     min-height: 8rem !important;
   }
-  body {
+  .body {
     background-image: url("/images/nada-background.png");
     background-size: cover;
   }
   .nav-logo {
     margin-top: -50px;
     padding-bottom: 50px;
+  }
+  footer p {
+    font-size: var(--font-size-x-small);
   }
 }
