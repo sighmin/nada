@@ -27,6 +27,9 @@ defmodule NadaWeb.ConnCase do
   end
 
   setup _tags do
+    on_exit fn ->
+      Nada.Mapping.flush()
+    end
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

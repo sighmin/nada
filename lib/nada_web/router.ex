@@ -26,7 +26,7 @@ defmodule NadaWeb.Router do
     get "/register", RegistrationController, :new
     post "/register", RegistrationController, :create
     get "/register/confirm", RegistrationController, :confirm
-    get "/register/complete", RegistrationController, :complete
+    get "/register/complete/:token", RegistrationController, :complete
 
     get "/login", SessionController, :new
     get "/login/face", SessionController, :face_id

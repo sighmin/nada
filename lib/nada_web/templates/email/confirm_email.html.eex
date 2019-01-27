@@ -2,5 +2,5 @@
   <h1>Welcome to nada</h1>
 </div>
 <div class="cta">
-  <p>Click to <a href="#">Confirm your email.</a></p>
+  <p>Click to <a href='<%= "#{NadaWeb.Endpoint.url}/register/complete/#{@token}" %>'>Confirm your email.</a></p>
 </div>

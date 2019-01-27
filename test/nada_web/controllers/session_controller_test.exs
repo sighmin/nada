@@ -1,28 +1,23 @@
-defmodule NadaWeb.RegistrationControllerTest do
+defmodule NadaWeb.SessionControllerTest do
   use NadaWeb.ConnCase
 
-  test "GET /register", %{conn: conn} do
-    conn = get(conn, Routes.registration_path(conn, :new))
-    assert html_response(conn, 200) =~ "Create an account"
+  test "GET /login", %{conn: conn} do
+    conn = get(conn, Routes.session_path(conn, :new))
+    assert html_response(conn, 200) =~ "take a selfie"
   end
 
-  test "POST /register", %{conn: conn} do
-    conn = post(conn, Routes.registration_path(conn, :create), %{
-      "user" => %{
-        "email" => "bob@example.com",
-        "file" => nil,
-      }
-    })
-    assert html_response(conn, 302) =~ "redirected"
+  test "GET /login/face", %{conn: conn} do
+    conn = get(conn, Routes.session_path(conn, :face_id))
+    assert html_response(conn, 200) =~ "looking you up from your face"
   end
 
-  test "GET /register/confirm", %{conn: conn} do
-    conn = get(conn, Routes.registration_path(conn, :confirm))
-    assert html_response(conn, 200) =~ "confirm your email"
+  test "GET /login/email", %{conn: conn} do
+    conn = get(conn, Routes.session_path(conn, :email_found))
+    assert html_response(conn, 200) =~ "We found you!"
   end
 
-  test "GET /register/complete", %{conn: conn} do
-    conn = get(conn, Routes.registration_path(conn, :complete))
-    assert html_response(conn, 200) =~ "completed your account"
+  test "GET /login/confirm", %{conn: conn} do
+    conn = get(conn, Routes.session_path(conn, :confirm))
+    assert html_response(conn, 200) =~ "sent you a magic link"
   end
 end
