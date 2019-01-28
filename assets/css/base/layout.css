@@ -7,6 +7,10 @@ main[role="main"] {
 header.main-nav {
   height: 60px;
 }
+.nav-logo .right {
+  float: right;
+  margin-top: 7px;
+}
 
 section {
   max-width: 400px;

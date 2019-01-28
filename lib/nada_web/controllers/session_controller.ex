@@ -16,4 +16,16 @@ defmodule NadaWeb.SessionController do
   def confirm(conn, _params) do
     render(conn, "confirm.html")
   end
+
+  def destroy(conn, %{ "redirect_path" => redirect_path }) do
+    conn
+      |> delete_session(:authenticated)
+      |> redirect(to: redirect_path)
+  end
+
+  def destroy(conn, _) do
+    conn
+      |> delete_session(:authenticated)
+      |> redirect(to: Routes.page_path(conn, :index))
+  end
 end

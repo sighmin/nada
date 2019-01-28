@@ -1,14 +1,14 @@
 <section>
-  <%= render NadaWeb.SharedView, "logo.html", assigns %>
+  <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>You're looking grand, take a selfie.</h2>
   </header>
   <div class="actions">
     <form action="<%= Routes.session_path(@conn, :face_id)%>" method="get">
-      <label for="file" accept="image/*" capture="user">
+      <label class="file" for="user_file">
         Take a selfie / Choose a photo
       </label>
-      <input type="file" id="file" />
+      <input type="file" name="user[file]" id="user_file" required="true" accept="image/*" capture="user" />
       <input type="submit" value="Upload" class="button" />
     </form>
   </div>

@@ -14,12 +14,16 @@ defmodule NadaWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :authenticate do
+    plug :set_authenticated
+  end
+
+  pipeline :authentication_required do
+    plug NadaWeb.AuthenticationPlug
   end
 
   scope "/", NadaWeb do
-    pipe_through :browser
+    pipe_through [:browser, :authenticate]
 
     get "/", PageController, :index
 
@@ -32,12 +36,17 @@ defmodule NadaWeb.Router do
     get "/login/face", SessionController, :face_id
     get "/login/email", SessionController, :email_found
     get "/login/confirm", SessionController, :confirm
+    get "/logout", SessionController, :destroy
+  end
+
+  scope "/", NadaWeb do
+    pipe_through [:browser, :authenticate, :authentication_required]
 
     get "/nothing", NothingController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", NadaWeb do
-  #   pipe_through :api
-  # end
+  defp set_authenticated(conn, _) do
+    authenticated = get_session(conn, :authenticated)
+    assign(conn, :authenicated, authenticated)
+  end
 end

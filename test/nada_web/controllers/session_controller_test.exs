@@ -20,4 +20,19 @@ defmodule NadaWeb.SessionControllerTest do
     conn = get(conn, Routes.session_path(conn, :confirm))
     assert html_response(conn, 200) =~ "sent you a magic link"
   end
+
+  test "GET /logout", %{conn: conn} do
+    conn = get(conn, Routes.session_path(conn, :destroy))
+    assert redirected_to(conn, 302) =~ "/"
+
+    refute get_session(conn, :authenticated)
+  end
+
+  test "GET /logout?redirect_path=/login", %{conn: conn} do
+    redirect_path = "/login"
+    conn = get(conn, Routes.session_path(conn, :destroy, redirect_path: redirect_path))
+    assert redirected_to(conn, 302) =~ redirect_path
+
+    refute get_session(conn, :authenticated)
+  end
 end

@@ -14,7 +14,8 @@ defmodule NadaWeb.RegistrationControllerTest do
         "file" => nil,
       }
     })
-    assert html_response(conn, 302) =~ "redirected"
+    assert redirected_to(conn, 302) =~ "/register"
+    refute Enum.empty?(Mapping.get())
   end
 
   test "GET /register/confirm", %{conn: conn} do
@@ -29,5 +30,15 @@ defmodule NadaWeb.RegistrationControllerTest do
 
     conn = get(conn, Routes.registration_path(conn, :complete, bob.token))
     assert html_response(conn, 200) =~ "completed your account"
+    assert get_session(conn, :authenticated) == true
+  end
+
+  test "GET /register/complete/:token with an invalid token", %{conn: conn} do
+    bob = User.new(%{"email" => "bob@example.com"})
+    Mapping.add(bob)
+
+    conn = get(conn, Routes.registration_path(conn, :complete, "poop-token"))
+    assert redirected_to(conn, 302) =~ "/"
+    assert get_session(conn, :authenticated) == nil
   end
 end

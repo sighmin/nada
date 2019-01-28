@@ -1,5 +1,5 @@
 <section>
-  <%= render NadaWeb.SharedView, "logo.html", assigns %>
+  <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>Create an account with your email and a selfie.</h2>
   </header>

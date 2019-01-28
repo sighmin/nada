@@ -12,6 +12,7 @@ defmodule NadaWeb.RegistrationController do
 
     # add user map to Agent
     user = User.new(user_params)
+    Mapping.add(user)
 
     # email confirmation
     user
@@ -29,7 +30,9 @@ defmodule NadaWeb.RegistrationController do
     user = Mapping.find_by_token(token)
 
     if user do
-      render(conn, "complete.html")
+      conn
+      |> put_session(:authenticated, true)
+      |> render("complete.html")
     else
       redirect(conn, to: Routes.page_path(conn, :index))
     end
