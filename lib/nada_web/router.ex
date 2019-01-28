@@ -33,11 +33,12 @@ defmodule NadaWeb.Router do
     get "/register/complete/:token", RegistrationController, :complete
 
     get "/login", SessionController, :new
-    post "/login", SessionController, :create
-    get "/login/face", SessionController, :face_id
     get "/login/email", SessionController, :email_found
+    post "/login/email", SessionController, :autocomplete_email
     get "/login/confirm", SessionController, :confirm
+    post "/login", SessionController, :create
     get "/logout", SessionController, :destroy
+    get "/login/face", SessionController, :face_id
   end
 
   scope "/", NadaWeb do

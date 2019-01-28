@@ -4,7 +4,6 @@
     <h2>We’ve sent you a magic link to login, please click it.</h2>
   </header>
   <div class="actions">
-    <!-- change me to a paragraph -->
-    <a href="/nothing">No need to come back here.</a>
+    <p>No need to come back here.</p>
   </div>
 </section>
