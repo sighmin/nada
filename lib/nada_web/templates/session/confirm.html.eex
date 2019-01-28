@@ -1,5 +1,5 @@
 <section>
-  <%= render NadaWeb.SharedView, "logo.html", assigns %>
+  <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>We’ve sent you a magic link to login, please click it.</h2>
   </header>

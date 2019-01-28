@@ -1,6 +1,6 @@
 defmodule NadaWeb.RegistrationController do
   use NadaWeb, :controller
-  alias Nada.{User, Email, Mailer}
+  alias Nada.{User, Email, Mailer, Mapping}
 
   def new(conn, _params) do
     render(conn, "new.html")
@@ -12,6 +12,7 @@ defmodule NadaWeb.RegistrationController do
 
     # add user map to Agent
     user = User.new(user_params)
+    Mapping.add(user)
 
     # email confirmation
     user
@@ -25,7 +26,15 @@ defmodule NadaWeb.RegistrationController do
     render(conn, "confirm.html")
   end
 
-  def complete(conn, _params) do
-    render(conn, "complete.html")
+  def complete(conn, %{ "token" => token }) do
+    user = Mapping.find_by_token(token)
+
+    if user do
+      conn
+      |> put_session(:authenticated, true)
+      |> render("complete.html")
+    else
+      redirect(conn, to: Routes.page_path(conn, :index))
+    end
   end
 end

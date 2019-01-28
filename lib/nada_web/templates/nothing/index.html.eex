@@ -1,5 +1,5 @@
 <section>
-  <%= render NadaWeb.SharedView, "logo.html", assigns %>
+  <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>Nice! You're authenticated!</h2>
   </header>
@@ -8,6 +8,6 @@
     <!-- change me to a paragraph -->
     <br>
     <br>
-    <a href="/">Logout</a>
+    <%= link "Logout", to: Routes.session_path(@conn, :destroy) %>
   </div>
 </section>

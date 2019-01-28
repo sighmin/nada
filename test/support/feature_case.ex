@@ -11,7 +11,10 @@ defmodule NadaWeb.FeatureCase do
 
   setup _tags do
     {:ok, session} = Wallaby.start_session()
-    on_exit fn -> Wallaby.end_session(session) end
+    on_exit fn ->
+      Nada.Mapping.flush()
+      Wallaby.end_session(session)
+    end
     {:ok, session: session}
   end
 end

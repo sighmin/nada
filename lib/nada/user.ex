@@ -1,5 +1,5 @@
 defmodule Nada.User do
-  defstruct [:email, :file, token: :generate_token]
+  defstruct [:email, :file, :token]
 
   def new(params) do
     struct(__MODULE__, build_params(params))
@@ -13,5 +13,6 @@ defmodule Nada.User do
 
   defp generate_token do
     Enum.take_random(?a..?z, 5)
+    |> to_string()
   end
 end

@@ -1,5 +1,5 @@
 <section>
-  <%= render NadaWeb.SharedView, "logo.html", assigns %>
+  <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>We found you! Please confirm your email.</h2>
   </header>

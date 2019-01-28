@@ -9,9 +9,9 @@ defmodule Nada.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      NadaWeb.Endpoint
+      NadaWeb.Endpoint,
       # Starts a worker by calling: Nada.Worker.start_link(arg)
-      # {Nada.Worker, arg},
+      {Nada.Mapping, [[]]},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -6,6 +6,7 @@ defmodule Nada.Email do
   def confirm_email(user) do
     base_email(user.email)
     |> subject("Welcome to nada!")
+    |> assign(:token, user.token)
     |> render("confirm_email.html")
   end
 
