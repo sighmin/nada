@@ -31,6 +31,7 @@ defmodule NadaWeb.RegistrationControllerTest do
     conn = get(conn, Routes.registration_path(conn, :complete, bob.token))
     assert html_response(conn, 200) =~ "completed your account"
     assert get_session(conn, :authenticated) == true
+    refute Mapping.find_by_email(bob.email).token
   end
 
   test "GET /register/complete/:token with an invalid token", %{conn: conn} do

@@ -4,12 +4,12 @@
     <h2>You're looking grand, take a selfie.</h2>
   </header>
   <div class="actions">
-    <form action="<%= Routes.session_path(@conn, :face_id)%>" method="get">
+    <%= form_tag(Routes.session_path(@conn, :autocomplete_email), multipart: true) do %>
       <label class="file" for="user_file">
         Take a selfie / Choose a photo
       </label>
       <input type="file" name="user[file]" id="user_file" required="true" accept="image/*" capture="user" />
       <input type="submit" value="Upload" class="button" />
-    </form>
+    <% end %>
   </div>
 </section>

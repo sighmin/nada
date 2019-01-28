@@ -30,6 +30,10 @@ defmodule NadaWeb.RegistrationController do
     user = Mapping.find_by_token(token)
 
     if user do
+      user
+      |> User.clear_tokens
+      |> Mapping.update
+
       conn
       |> put_session(:authenticated, true)
       |> render("complete.html")

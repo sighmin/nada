@@ -8,4 +8,22 @@ defmodule Nada.UserTest do
     assert params["email"], user.email
     assert user.token
   end
+
+  test "generate_otp sets a new otp" do
+    bob = User.new(%{ "email" => "bob@email.com" })
+    refute bob.otp
+    bob = User.generate_otp(bob)
+    assert bob.otp
+  end
+
+  test "clear tokens removes otp and token" do
+    bob = User.new(%{ "email" => "bob@email.com" })
+    bob = User.generate_otp(bob)
+    assert bob.token
+    assert bob.otp
+
+    bob = User.clear_tokens(bob)
+    refute bob.token
+    refute bob.otp
+  end
 end

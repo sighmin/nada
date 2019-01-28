@@ -4,9 +4,11 @@
     <h2>We found you! Please confirm your email.</h2>
   </header>
   <div class="actions">
-    <form action="<%= Routes.session_path(@conn, :confirm)%>" method="get">
-      <input type="email" placeholder="your@email.com" />
+    <%= form_tag(Routes.session_path(@conn, :create), multipart: true) do %>
+      <input type="email" name="user[email]" placeholder="your@email.com"
+             value="<%= assigns[:email] %>"
+             required="true" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
       <input type="submit" value="Yup, that's mine", class="button" />
-    </form>
+    <% end %>
   </div>
 </section>
