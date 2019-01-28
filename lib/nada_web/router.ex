@@ -37,6 +37,7 @@ defmodule NadaWeb.Router do
     post "/login/email", SessionController, :autocomplete_email
     get "/login/confirm", SessionController, :confirm
     post "/login", SessionController, :create
+    get "/login/complete/:otp", SessionController, :complete
     get "/logout", SessionController, :destroy
     get "/login/face", SessionController, :face_id
   end

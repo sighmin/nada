@@ -10,6 +10,13 @@ defmodule Nada.Email do
     |> render("confirm_email.html")
   end
 
+  def confirm_otp(user) do
+    base_email(user.email)
+    |> subject("Login to nada")
+    |> assign(:otp, user.otp)
+    |> render("confirm_otp.html")
+  end
+
   defp base_email(email) do
     new_email()
     |> to(email)
