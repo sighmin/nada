@@ -1,6 +1,11 @@
-<div class="header">
+<div class="header" style="margin: 50px 0;">
   <h1>Login to nada</h1>
 </div>
-<div class="cta">
-  <p>Click to <a href='<%= "#{NadaWeb.Endpoint.url}/login/complete/#{@otp}" %>' target="_blank">Login to nada.</a></p>
+<div class="cta" style="margin: 35px 0;">
+  <p>Click to <a href='<%= "#{NadaWeb.Endpoint.url}/login/complete/#{@otp}" %>'
+                 target="_blank"
+                 onmouseover="this.style.color='#313131'"
+                 onmouseout="this.style.color='#646464'"
+                 style="color: #646464;">Login to nada.</a>
+  </p>
 </div>
