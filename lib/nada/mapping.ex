@@ -26,6 +26,13 @@ defmodule Nada.Mapping do
     end)
   end
 
+  def find_by_file(file) do
+    list = Nada.Mapping.get()
+    Enum.find(list, fn(user) ->
+      user.file.filename == file.filename
+    end)
+  end
+
   def flush() do
     Agent.update(__MODULE__, fn _state ->
       []

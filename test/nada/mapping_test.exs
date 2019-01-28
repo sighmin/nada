@@ -37,4 +37,25 @@ defmodule Nada.MappingTest do
     assert bob == Mapping.find_by_token(bob.token)
     assert jim == Mapping.find_by_token(jim.token)
   end
+
+  test "find_by_file returns first matching user" do
+    bob = User.new(%{
+      "email" => "bob@example.com",
+      "file" => %Plug.Upload{path: "test/fixtures/face.jpg", filename: "bob.jpg"},
+    })
+    jim = User.new(%{
+      "email" => "jim@example.com",
+      "file" => %Plug.Upload{path: "test/fixtures/face.jpg", filename: "jim.jpg"},
+    })
+    eeb = User.new(%{
+      "email" => "eeb@example.com",
+      "file" => %Plug.Upload{path: "test/fixtures/face.jpg", filename: "eeb.jpg"},
+    })
+    Mapping.add(bob)
+    Mapping.add(jim)
+
+    assert nil == Mapping.find_by_file(eeb.file)
+    assert bob == Mapping.find_by_file(bob.file)
+    assert jim == Mapping.find_by_file(jim.file)
+  end
 end

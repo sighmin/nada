@@ -1,9 +1,29 @@
 defmodule NadaWeb.SessionControllerTest do
   use NadaWeb.ConnCase
+  alias Nada.{User,Mapping}
 
   test "GET /login", %{conn: conn} do
     conn = get(conn, Routes.session_path(conn, :new))
     assert html_response(conn, 200) =~ "take a selfie"
+  end
+
+  test "POST /login", %{conn: conn} do
+    file = %Plug.Upload{path: "test/fixtures/face.jpg", filename: "face.jpg"}
+    bob = User.new(%{
+      "email" => "bob@example.com",
+      "file" => file,
+    })
+    Mapping.add(bob)
+    assert bob == Mapping.find_by_file(file)
+
+    user_params = %{
+      "user" => %{
+        "file" => file
+      }
+    }
+
+    conn = post(conn, Routes.session_path(conn, :create), user_params)
+    assert redirected_to(conn, 302) =~ Routes.session_path(conn, :email_found)
   end
 
   test "GET /login/face", %{conn: conn} do
