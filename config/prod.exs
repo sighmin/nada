@@ -64,30 +64,16 @@ config :nada, NadaWeb.Endpoint,
 
 config :nada, NadaWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "localhost", port: {:system, "PORT"}], # This is critical for ensuring web-sockets properly authorize.
+  load_from_system_env: true,
+  url: [scheme: "https", host: "thisappdoesnothing.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  server: true,
-  root: ".",
-  version: Application.spec(:nada, :vsn)
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 #
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
 
 # Configure email
 config :nada, Nada.Mailer,
-  adapter: Bamboo.SMTPAdapter,
-  server: "smtp.gmail.com",
-  hostname: "gmail.com",
-  port: 587,
-  username: System.get_env("SMTP_USERNAME"),
-  password: System.get_env("SMTP_PASSWORD"),
-  tls: :if_available,
-  allowed_tls_versions: [:"tlsv1", :"tlsv1.1", :"tlsv1.2"],
-  ssl: true,
-  retries: 1,
-  no_mx_lookups: false,
-  auth: :always,
-
-# Finally import the config/prod.secret.exs which should be versioned
-# separately.
-import_config "prod.secret.exs"
+  adapter: Bamboo.SendGridAdapter,
+  api_key: Map.fetch!(System.get_env(), "SENDGRID_API_KEY")
