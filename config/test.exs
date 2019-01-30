@@ -18,3 +18,7 @@ config :wallaby,
 # Configure email
 config :nada, Nada.Mailer,
   adapter: Bamboo.TestAdapter
+
+# Configure Aws adapter
+config :nada, Aws,
+  adapter: Aws.Test
