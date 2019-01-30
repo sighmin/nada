@@ -8,10 +8,11 @@ defmodule NadaWeb.RegistrationControllerTest do
   end
 
   test "POST /register", %{conn: conn} do
+    file = %Plug.Upload{path: "test/fixtures/face.jpg", filename: "face.jpg"}
     conn = post(conn, Routes.registration_path(conn, :create), %{
       "user" => %{
         "email" => "bob@example.com",
-        "file" => nil,
+        "file" => file,
       }
     })
     assert redirected_to(conn, 302) =~ "/register"
