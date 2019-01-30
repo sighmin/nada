@@ -26,6 +26,16 @@ config :phoenix, :json_library, Jason
 config :nada, Nada.Mailer,
   adapter: Bamboo.LocalAdapter
 
+# Configure file storage
+config :ex_aws,
+  access_key_id: [{:system, "AWS_ACCESS_KEY_ID"}, :instance_role],
+  secret_access_key: [{:system, "AWS_SECRET_ACCESS_KEY"}, :instance_role],
+  region: Map.fetch!(System.get_env(), "AWS_REGION")
+
+# Configure Aws adapter
+config :nada, Aws,
+  adapter: Aws.Live
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

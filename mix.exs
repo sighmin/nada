@@ -49,6 +49,11 @@ defmodule Nada.MixProject do
       {:wallaby, "~> 0.21.0", [runtime: false, only: :test]},
       {:ex_machina, "~> 2.2", [runtime: false, only: :test]},
       {:bamboo, "~> 1.1"},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:poison, "~> 3.0"},
+      {:hackney, "~> 1.9"},
+      {:sweet_xml, "~> 0.6"},
     ]
   end
 
