@@ -9,6 +9,25 @@ defmodule Nada.UserTest do
     assert user.token
   end
 
+  test "new formats user's file" do
+    params = %{
+      "email" => "bob@email.com",
+      "file" => %Plug.Upload{
+        path: "test/fixtures/face.jpg",
+        filename: "face.jpg"
+      }
+    }
+    user = User.new(params)
+    assert params["email"], user.email
+
+    expected_file_map = %{
+      file_id: "pkbohv-face.jpg",
+      file_name: "face.jpg",
+    }
+    assert expected_file_map.file_name == user.file.file_name
+    assert expected_file_map.file_id =~ user.file.file_name
+  end
+
   test "generate_otp sets a new otp" do
     bob = User.new(%{ "email" => "bob@email.com" })
     refute bob.otp

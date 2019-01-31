@@ -8,8 +8,20 @@ defmodule Nada.User do
 
   def build_params(params) do
     params
-    |> Map.Helpers.atomize_keys()
+    |> Map.Helpers.atomize_keys
+    |> Map.merge(%{file: format_file_params(params)})
     |> Map.merge(%{token: Random.generate})
+  end
+
+  def format_file_params(%{ "file" => file_params }) do
+    %{
+      file_id: Random.generate_unique_file_id(file_params.filename),
+      file_name: file_params.filename
+    }
+  end
+
+  def format_file_params(_) do
+    %{}
   end
 
   def generate_otp(user) do
