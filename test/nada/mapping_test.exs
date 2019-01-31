@@ -59,24 +59,27 @@ defmodule Nada.MappingTest do
   end
 
   test "find_by_file returns first matching user" do
-    bob = User.new(%{
+    bob_params = %{
       "email" => "bob@example.com",
       "file" => %Plug.Upload{path: "test/fixtures/face.jpg", filename: "bob.jpg"},
-    })
-    jim = User.new(%{
+    }
+    bob = User.new(bob_params)
+    jim_params = %{
       "email" => "jim@example.com",
       "file" => %Plug.Upload{path: "test/fixtures/face.jpg", filename: "jim.jpg"},
-    })
-    eeb = User.new(%{
+    }
+    jim = User.new(jim_params)
+    eeb_params = %{
       "email" => "eeb@example.com",
       "file" => %Plug.Upload{path: "test/fixtures/face.jpg", filename: "eeb.jpg"},
-    })
+    }
+    _eeb = User.new(eeb_params)
     Mapping.add(bob)
     Mapping.add(jim)
 
-    assert nil == Mapping.find_by_file(eeb.file)
-    assert bob == Mapping.find_by_file(bob.file)
-    assert jim == Mapping.find_by_file(jim.file)
+    assert nil == Mapping.find_by_file(eeb_params["file"])
+    assert bob == Mapping.find_by_file(bob_params["file"])
+    assert jim == Mapping.find_by_file(jim_params["file"])
   end
 
   test "find_by_email returns first matching user" do

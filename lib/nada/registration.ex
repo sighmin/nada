@@ -1,17 +1,14 @@
 defmodule Nada.Registration do
-  alias Nada.{Random,User,Mapping,Email,Mailer,Files}
+  alias Nada.{User,Mapping,Email,Mailer,Files}
 
   def identity_claim(user_params = %{ "file" => file_params }) do
-    # generate unique file_id
-    file_id = generate_unique_file_id(file_params)
-    {:ok, file_data} = File.read(Map.fetch!(file_params, :path))
-
-    # upload to s3
-    Files.put(file_id, file_data)
-
-    # add user to Mapping
+    # create user claim
     user = User.new(user_params)
     Mapping.add(user)
+
+    # upload to s3 for face identification
+    {:ok, file_data} = File.read(Map.fetch!(file_params, :path))
+    {:ok, _} = Files.put(user.file.file_id, file_data)
 
     # send email confirmation
     user
@@ -27,9 +24,5 @@ defmodule Nada.Registration do
     user
     |> User.clear_tokens
     |> Mapping.update
-  end
-
-  defp generate_unique_file_id(file_params) do
-    "#{Random.generate}-#{Map.fetch!(file_params, :filename)}"
   end
 end
