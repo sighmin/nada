@@ -1,4 +1,4 @@
-defmodule Aws.Test do
+defmodule AwsApi.Test do
   def request(stubbed_test_response) do
     stubbed_test_response
   end

@@ -33,8 +33,8 @@ config :ex_aws,
   region: Map.fetch!(System.get_env(), "AWS_REGION")
 
 # Configure Aws adapter
-config :nada, Aws,
-  adapter: Aws.Live
+config :nada, AwsApi,
+  adapter: AwsApi.Live
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

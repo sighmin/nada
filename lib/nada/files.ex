@@ -4,22 +4,22 @@ defmodule Nada.Files do
 
   def get(file_key) do
     @bucket
-    |> Aws.get_object(file_key)
-    |> Aws.request
+    |> AwsApi.get_object(file_key)
+    |> AwsApi.request
     |> format_file
   end
 
   def list do
     @bucket
-    |> Aws.list_objects
-    |> Aws.request
+    |> AwsApi.list_objects
+    |> AwsApi.request
     |> format_files
   end
 
   def put(file_id, file_data) do
     @bucket
-    |> Aws.put_object(file_id, file_data)
-    |> Aws.request
+    |> AwsApi.put_object(file_id, file_data)
+    |> AwsApi.request
     |> format_file
   end
 

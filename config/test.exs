@@ -20,5 +20,5 @@ config :nada, Nada.Mailer,
   adapter: Bamboo.TestAdapter
 
 # Configure Aws adapter
-config :nada, Aws,
-  adapter: Aws.Test
+config :nada, AwsApi,
+  adapter: AwsApi.Test
