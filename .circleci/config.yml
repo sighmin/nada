@@ -6,6 +6,10 @@ jobs:
       - image: circleci/elixir:1.7.4-browsers
         environment:
           MIX_ENV: test
+          AWS_ACCESS_KEY_ID: access-key-id
+          AWS_SECRET_ACCESS_KEY: secret-access-key
+          AWS_REGION: some-s3-region
+          AWS_S3_BUCKET: s3-bucket
     working_directory: ~/app
 
     steps:
