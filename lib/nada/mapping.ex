@@ -52,13 +52,15 @@ defmodule Nada.Mapping do
     end)
   end
 
-  # todo:
-  # - post to rekognition
-  # - get closest matching face's file_id ("key" of the object on s3)
-  # - find_by_file_id(file_id)
   def find_by_file(file) do
     find_by(fn(user) ->
       user.file.file_name == file.filename
+    end)
+  end
+
+  def find_by_face_id(face_id) do
+    find_by(fn(user) ->
+      user.face_id == face_id
     end)
   end
 

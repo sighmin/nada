@@ -7,7 +7,7 @@ defmodule Nada.Registration do
     Mapping.add(user)
 
     # upload to s3 for face identification
-    {:ok, file_data} = File.read(Map.fetch!(file_params, :path))
+    {:ok, file_data} = File.read(file_params.path)
     {:ok, _} = Files.put(user.file.file_id, file_data)
 
     # register face in image
