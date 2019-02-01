@@ -1,5 +1,5 @@
 defmodule Nada.User do
-  defstruct [:email, :file, :token, :otp]
+  defstruct [:email, :file, :token, :otp, :face_id, :registration_confidence]
   alias Nada.Random
 
   def new(params) do

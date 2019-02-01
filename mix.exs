@@ -54,7 +54,7 @@ defmodule Nada.MixProject do
       {:poison, "~> 3.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
-      {:aws, github: "sighmin/aws-elixir", tag: "v0.5.1"},
+      {:httpoison, "~> 1.4"},
     ]
   end
 

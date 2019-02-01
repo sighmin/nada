@@ -1,4 +1,5 @@
 defmodule Nada.Files do
+  alias Nada.AwsApi
   @bucket Map.fetch!(System.get_env(), "AWS_S3_BUCKET")
   @default_error {:error, "Files: Unknown error occured talking to s3"}
 
