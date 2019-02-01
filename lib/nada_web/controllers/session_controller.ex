@@ -1,13 +1,14 @@
 defmodule NadaWeb.SessionController do
   use NadaWeb, :controller
-  alias Nada.{Mapping, Email, Mailer, User}
+  alias Nada.{Sessions,Mapping}
 
   def new(conn, _params) do
     render(conn, "new.html")
   end
 
   def autocomplete_email(conn, %{ "user" => %{ "file" => file } }) do
-    user = Mapping.find_by_file(file)
+    user = Sessions.find_user_from_face(file)
+
     if user do
       conn
       |> redirect(to: Routes.session_path(conn, :email_found, email: user.email))
@@ -27,10 +28,7 @@ defmodule NadaWeb.SessionController do
 
     if user do
       user
-      |> User.generate_otp
-      |> Mapping.update
-      |> Email.confirm_otp
-      |> Mailer.deliver_now
+      |> Sessions.identity_challenge
 
       conn
       |> redirect(to: Routes.session_path(conn, :confirm))
@@ -50,8 +48,7 @@ defmodule NadaWeb.SessionController do
 
     if user do
       user
-      |> User.clear_tokens
-      |> Mapping.update
+      |> Sessions.complete_login
 
       conn
       |> put_session(:authenticated, true)

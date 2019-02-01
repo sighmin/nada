@@ -1,6 +1,6 @@
 defmodule NadaWeb.RegistrationControllerTest do
   use NadaWeb.ConnCase
-  alias Nada.{User, Mapping}
+  alias Nada.{User,Mapping}
 
   test "GET /register", %{conn: conn} do
     conn = get(conn, Routes.registration_path(conn, :new))
@@ -16,7 +16,14 @@ defmodule NadaWeb.RegistrationControllerTest do
       }
     })
     assert redirected_to(conn, 302) =~ "/register"
-    refute Enum.empty?(Mapping.get())
+
+    users = Mapping.get()
+    refute Enum.empty?(users)
+
+    user = users |> List.first
+    assert user.token
+    assert user.face_id
+    assert user.registration_confidence
   end
 
   test "GET /register/confirm", %{conn: conn} do

@@ -54,6 +54,7 @@ defmodule Nada.MixProject do
       {:poison, "~> 3.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
+      {:httpoison, "~> 1.4"},
     ]
   end
 

@@ -20,5 +20,9 @@ config :nada, Nada.Mailer,
   adapter: Bamboo.TestAdapter
 
 # Configure Aws adapter
-config :nada, Aws,
-  adapter: Aws.Test
+config :nada, Nada.AwsApi,
+  adapter: Nada.AwsApi.Test
+
+# Configure Nada Faces API adapter
+config :nada, Nada.FaceApi,
+  adapter: Nada.FaceApi.Test

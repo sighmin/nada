@@ -1,6 +1,6 @@
 defmodule Nada.Random do
   def generate_unique_file_id(filename) do
-    "#{generate}-#{filename}"
+    "#{generate()}-#{filename}"
   end
 
   def generate(length \\ 6) do
