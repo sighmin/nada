@@ -7,11 +7,7 @@ defmodule NadaWeb.SessionController do
   end
 
   def autocomplete_email(conn, %{ "user" => %{ "file" => file } }) do
-    # new implementation - make it work!
-    #user = Sessions.find_user_from_face(file)
-
-    # old implementation - remove!
-    user = Mapping.find_by_file(file)
+    user = Sessions.find_user_from_face(file)
 
     if user do
       conn

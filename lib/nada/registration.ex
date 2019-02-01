@@ -21,7 +21,7 @@ defmodule Nada.Registration do
     # send email confirmation
     user
     |> Email.confirm_email
-    |> Mailer.deliver_now
+    |> Mailer.deliver_later
   end
 
   def identity_verification(token) do

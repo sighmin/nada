@@ -9,7 +9,7 @@ defmodule Nada.Sessions do
 
     # search for face in image and get face_id
     {:ok, %{ "matches" => matches }} = FaceApi.search(file_id)
-    match = matches |> List.first |> IO.inspect
+    match = matches |> List.first
     %{ "face_id" => face_id, "similarity" => _similarity } = match
 
     # find user in the mapping by face_id
@@ -21,7 +21,7 @@ defmodule Nada.Sessions do
     |> User.generate_otp
     |> Mapping.update
     |> Email.confirm_otp
-    |> Mailer.deliver_now
+    |> Mailer.deliver_later
   end
 
   def complete_login(user) do
