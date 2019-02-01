@@ -9,12 +9,15 @@ defmodule NadaWeb.SessionControllerTest do
 
   test "POST /login/email", %{conn: conn} do
     file = %Plug.Upload{path: "test/fixtures/face.jpg", filename: "face.jpg"}
+    face_id = "abc123"
+    email = "bob@example.com"
     bob = User.new(%{
-      "email" => "bob@example.com",
+      "email" => email,
       "file" => file,
+      "face_id" => face_id,
     })
     Mapping.add(bob)
-    assert bob == Mapping.find_by_file(file)
+    assert bob == Mapping.find_by_face_id(face_id)
 
     user_params = %{
       "user" => %{
@@ -24,6 +27,9 @@ defmodule NadaWeb.SessionControllerTest do
 
     conn = post(conn, Routes.session_path(conn, :autocomplete_email), user_params)
     assert redirected_to(conn, 302) =~ Routes.session_path(conn, :email_found)
+    user = Mapping.get() |> List.first
+    assert face_id == user.face_id
+    assert email == user.email
   end
 
   test "GET /login/email", %{conn: conn} do
