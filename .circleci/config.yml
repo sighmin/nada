@@ -10,6 +10,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: secret-access-key
           AWS_REGION: some-s3-region
           AWS_S3_BUCKET: s3-bucket
+          CACHE_SUFFIX: 0
     working_directory: ~/app
 
     steps:
@@ -18,30 +19,34 @@ jobs:
       - run: mix local.hex --force
       - run: mix local.rebar --force
 
+      - type: shell
+        name: "Write CACHE_SUFFIX to file"
+        command: echo "$CACHE_SUFFIX" > ~/cache_suffix.txt
+
       - restore_cache:
           keys:
-            - v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
-            - v1-mix-cache-{{ .Branch }}
-            - v1-mix-cache
+            - v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}-{{ checksum "~/cache_suffix.txt" }}
+            - v1-mix-cache-{{ .Branch }}-{{ checksum "~/cache_suffix.txt" }}
+            - v1-mix-cache-{{ checksum "~/cache_suffix.txt" }}
       - restore_cache:
           keys:
-            - v1-build-cache-{{ .Branch }}
-            - v1-build-cache
+            - v1-build-cache-{{ .Branch }}-{{ checksum "~/cache_suffix.txt" }}
+            - v1-build-cache-{{ checksum "~/cache_suffix.txt" }}
       - run: mix do deps.get, compile
       - save_cache:
-          key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
+          key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}-{{ checksum "~/cache_suffix.txt" }}
           paths: "deps"
       - save_cache:
-          key: v1-mix-cache-{{ .Branch }}
+          key: v1-mix-cache-{{ .Branch }}-{{ checksum "~/cache_suffix.txt" }}
           paths: "deps"
       - save_cache:
-          key: v1-mix-cache
+          key: v1-mix-cache-{{ checksum "~/cache_suffix.txt" }}
           paths: "deps"
       - save_cache:
-          key: v1-build-cache-{{ .Branch }}
+          key: v1-build-cache-{{ .Branch }}-{{ checksum "~/cache_suffix.txt" }}
           paths: "_build"
       - save_cache:
-          key: v1-build-cache
+          key: v1-build-cache-{{ checksum "~/cache_suffix.txt" }}
           paths: "_build"
 
       - run: mix test

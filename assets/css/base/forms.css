@@ -7,6 +7,7 @@ select,
 .button {
   display: block;
   color: var(--color-text);
+  background: var(--color-transparent);
   text-decoration: none;
   border: 2px solid var(--color-outline);
   text-align: center;
