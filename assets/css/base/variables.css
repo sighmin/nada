@@ -37,6 +37,7 @@
   --color-subtle-grey: #fafafa;
   --color-medium-grey: #8c8c8c;
   --color-grey: #646464;
+  --color-transparent: rgba(0, 0, 0, 0.0);
 
   --color-text: var(--color-black);
   --color-outline: var(--color-black);

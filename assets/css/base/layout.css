@@ -65,3 +65,12 @@ footer p {
     font-size: var(--font-size-x-small);
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .nav-logo {
+    padding-bottom: 0;
+  }
+  section.brand {
+    margin-top: -60px;
+  }
+}
