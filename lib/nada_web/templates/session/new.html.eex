@@ -1,4 +1,4 @@
-<section>
+<section class="js-login">
   <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>You're looking grand, take a selfie.</h2>
@@ -11,5 +11,9 @@
       <input type="file" name="user[file]" id="user_file" required="true" accept="image/*" capture="user" />
       <input type="submit" value="Upload" class="button" />
     <% end %>
+  </div>
+  <div class="progress hide">
+    <div class="image"></div>
+    <p>Processing...</p>
   </div>
 </section>

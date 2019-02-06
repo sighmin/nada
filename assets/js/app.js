@@ -17,4 +17,8 @@ import "phoenix_html";
 // import socket from "./socket"
 
 import setupFileInputs from "./fileinputs.js";
-document.addEventListener("DOMContentLoaded", setupFileInputs);
+import setupProgressScreens from "./progress.js";
+document.addEventListener("DOMContentLoaded", () => {
+  setupFileInputs();
+  setupProgressScreens();
+});
