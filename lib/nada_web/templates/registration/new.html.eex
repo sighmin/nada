@@ -1,4 +1,4 @@
-<section>
+<section class="js-register">
   <%= render NadaWeb.SharedView, "nav.html", assigns %>
   <header class="dialog">
     <h2>Create an account with your email and a selfie.</h2>
@@ -12,5 +12,9 @@
       <input type="file" name="user[file]" id="user_file" required="true" accept="image/*" capture="user" />
       <input type="submit" value="Create my account" class="button" />
     <% end %>
+  </div>
+  <div class="progress hide">
+    <div class="image"></div>
+    <p>Processing...</p>
   </div>
 </section>

@@ -7,6 +7,10 @@
 
 /* Pages, Components, Modules */
 @import "./modules/landing.css";
+@import "./modules/progress.css";
+
+/* Modifiers */
+@import "./utilities/modifiers.css";
 
 /* Phoenix styling */
 @import "./phoenix.css";
