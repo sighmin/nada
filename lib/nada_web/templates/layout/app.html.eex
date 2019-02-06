@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>nada</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link rel="icon" href="<%= Routes.static_path(@conn, "/images/favicon.png") %>" type="image/x-icon" />
   </head>
   <body class="body">
     <main role="main">
