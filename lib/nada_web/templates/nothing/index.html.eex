@@ -4,8 +4,8 @@
     <h2>Nice! You're authenticated!</h2>
   </header>
   <div class="actions nothing-alert">
+    <%= render NadaWeb.SharedView, "flash.html", assigns %>
     <p>But this app actually doesn't do anything... so... this is awkward.
-    <!-- change me to a paragraph -->
     <br>
     <br>
     <%= link "Logout", to: Routes.session_path(@conn, :destroy) %>

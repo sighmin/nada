@@ -94,9 +94,4 @@ defmodule NadaWeb.SessionControllerTest do
 
     refute get_session(conn, :authenticated)
   end
-
-  test "GET /login/face", %{conn: conn} do
-    conn = get(conn, Routes.session_path(conn, :face_id))
-    assert html_response(conn, 200) =~ "looking you up from your face"
-  end
 end

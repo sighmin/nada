@@ -4,6 +4,7 @@
     <p class="slogan">"login with nothing"</p>
   </header>
   <div class="actions">
+    <%= render NadaWeb.SharedView, "flash.html", assigns %>
     <%= link "Login", to: Routes.session_path(@conn, :new), class: 'button' %>
     <%= link "Create an account", to: Routes.registration_path(@conn, :new) %>
   </div>

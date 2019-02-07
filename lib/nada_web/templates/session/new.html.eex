@@ -4,6 +4,7 @@
     <h2>You're looking grand, take a selfie.</h2>
   </header>
   <div class="actions">
+    <%= render NadaWeb.SharedView, "flash.html", assigns %>
     <%= form_tag(Routes.session_path(@conn, :autocomplete_email), multipart: true) do %>
       <label class="file" for="user_file">
         Take a selfie / Choose a photo

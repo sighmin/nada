@@ -4,6 +4,7 @@
     <h2>Nice! You've completed your account.</h3>
   </header>
   <div class="actions">
+    <%= render NadaWeb.SharedView, "flash.html", assigns %>
     <p>Now you can login with your face.</p>
     <%= link "Let's do it", to: Routes.session_path(@conn, :destroy, redirect_path: "/login"), class: "button" %>
   </div>
