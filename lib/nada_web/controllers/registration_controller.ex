@@ -7,8 +7,14 @@ defmodule NadaWeb.RegistrationController do
   end
 
   def create(conn, %{ "user" => user_params }) do
-    Registration.identity_claim(user_params)
-    redirect(conn, to: Routes.registration_path(conn, :confirm))
+    case Registration.identity_claim(user_params) do
+      {:ok, _user} ->
+        redirect(conn, to: Routes.registration_path(conn, :confirm))
+      {:error, message} ->
+        conn
+        |> put_flash(:error, message)
+        |> redirect(to: Routes.registration_path(conn, :new))
+    end
   end
 
   def confirm(conn, _params) do

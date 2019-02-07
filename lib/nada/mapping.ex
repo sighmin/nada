@@ -64,6 +64,13 @@ defmodule Nada.Mapping do
     end)
   end
 
+  def find_user(new_user) do
+    find_by(fn(user) ->
+      user.email == new_user.email ||
+        user.face_id == new_user.face_id
+    end)
+  end
+
   def flush() do
     Agent.update(__MODULE__, fn _state ->
       []

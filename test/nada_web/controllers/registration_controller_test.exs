@@ -26,6 +26,30 @@ defmodule NadaWeb.RegistrationControllerTest do
     assert user.registration_confidence
   end
 
+  test "POST /register when already registered", %{conn: conn} do
+    file = %Plug.Upload{path: "test/fixtures/face.jpg", filename: "face.jpg"}
+    face_id = "abc123"
+    email = "bob@example.com"
+    user = User.new(%{
+      "email" => email,
+      "file" => file,
+      "face_id" => face_id,
+    })
+    Mapping.add(user)
+    users = Mapping.get()
+    assert 1 == length(users)
+
+    conn = post(conn, Routes.registration_path(conn, :create), %{
+      "user" => %{
+        "email" => user.email,
+        "file" => file,
+      }
+    })
+    assert redirected_to(conn, 302) =~ "/register"
+    users = Mapping.get()
+    assert 1 == length(users)
+  end
+
   test "GET /register/confirm", %{conn: conn} do
     conn = get(conn, Routes.registration_path(conn, :confirm))
     resp = html_response(conn, 200)
