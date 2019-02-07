@@ -6,7 +6,10 @@ const previewImage = (file, imageContainer) => {
   };
 };
 
-const setupProgressScreen = (selector, progressText) => {
+const setupProgressScreen = (
+  selector,
+  { progressText, errorText, errorPath }
+) => {
   let section = document.querySelector(selector);
   if (!section) {
     return;
@@ -29,21 +32,44 @@ const setupProgressScreen = (selector, progressText) => {
     previewImage(fileInput.files[0], imageContainer);
     progress.classList.remove("hide");
   };
+  const submitForm = () => {
+    fetch(form.action, {
+      body: new FormData(form),
+      method: "post"
+    })
+      .then(response => {
+        console.debug(response);
+        window.location = response.url;
+      })
+      .catch(error => {
+        const encodedErrorMessage = encodeURIComponent(errorText);
+        window.location = `/${errorPath}?error=${encodedErrorMessage}`;
+      });
+  };
 
   submitButton.addEventListener("click", event => {
+    event.preventDefault();
+
     if (form.checkValidity()) {
       changeText();
       hideForm();
       showProgressImage();
-    } else {
-      event.preventDefault();
+      submitForm();
     }
   });
 };
 
 const setupProgressScreens = () => {
-  setupProgressScreen(".js-login", "We're looking you up from your face...");
-  setupProgressScreen(".js-register", "We're registering your face now...");
+  setupProgressScreen(".js-login", {
+    progressText: "We're looking you up from your face...",
+    errorText: "Something went wrong logging in :(",
+    errorPath: "login"
+  });
+  setupProgressScreen(".js-register", {
+    progressText: "We're registering your face now...",
+    errorText: "Something went wrong :(",
+    errorPath: "register"
+  });
 };
 
 export default setupProgressScreens;

@@ -18,12 +18,16 @@ defmodule NadaWeb.Router do
     plug :set_authenticated
   end
 
+  pipeline :assign_flash do
+    plug :capture_flash
+  end
+
   pipeline :authentication_required do
     plug NadaWeb.AuthenticationPlug
   end
 
   scope "/", NadaWeb do
-    pipe_through [:browser, :authenticate]
+    pipe_through [:browser, :authenticate, :assign_flash]
 
     get "/", PageController, :index
 
@@ -50,5 +54,11 @@ defmodule NadaWeb.Router do
   defp set_authenticated(conn, _) do
     authenticated = get_session(conn, :authenticated)
     assign(conn, :authenicated, authenticated)
+  end
+
+  defp capture_flash(conn, _) do
+    conn
+    |> put_flash(:info, conn.query_params["info"])
+    |> put_flash(:error, conn.query_params["error"])
   end
 end
