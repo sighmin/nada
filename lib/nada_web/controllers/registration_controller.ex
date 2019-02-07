@@ -12,8 +12,7 @@ defmodule NadaWeb.RegistrationController do
         redirect(conn, to: Routes.registration_path(conn, :confirm))
       {:error, message} ->
         conn
-        |> put_flash(:error, message)
-        |> redirect(to: Routes.registration_path(conn, :new))
+        |> redirect(to: Routes.registration_path(conn, :new, error: message))
     end
   end
 
