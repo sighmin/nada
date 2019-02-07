@@ -34,7 +34,7 @@ defmodule NadaWeb.SessionControllerTest do
 
   test "GET /login/email", %{conn: conn} do
     conn = get(conn, Routes.session_path(conn, :email_found))
-    assert html_response(conn, 200) =~ "We found you!"
+    assert html_response(conn, 200) =~ "We can&#39;t find you"
   end
 
   test "POST /login", %{conn: conn} do
@@ -93,10 +93,5 @@ defmodule NadaWeb.SessionControllerTest do
     assert redirected_to(conn, 302) =~ redirect_path
 
     refute get_session(conn, :authenticated)
-  end
-
-  test "GET /login/face", %{conn: conn} do
-    conn = get(conn, Routes.session_path(conn, :face_id))
-    assert html_response(conn, 200) =~ "looking you up from your face"
   end
 end

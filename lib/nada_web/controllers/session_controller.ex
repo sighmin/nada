@@ -63,18 +63,14 @@ defmodule NadaWeb.SessionController do
   def destroy(conn, %{ "redirect_path" => redirect_path }) do
     conn
       |> delete_session(:authenticated)
+      |> put_flash(:info, "Successfully logged out.")
       |> redirect(to: redirect_path)
   end
 
   def destroy(conn, _) do
     conn
       |> delete_session(:authenticated)
+      |> put_flash(:info, "Successfully logged out.")
       |> redirect(to: Routes.page_path(conn, :index))
-  end
-
-  # static routes
-
-  def face_id(conn, _params) do
-    render(conn, "face_id.html")
   end
 end

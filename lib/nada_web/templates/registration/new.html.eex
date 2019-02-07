@@ -4,6 +4,7 @@
     <h2>Create an account with your email and a selfie.</h2>
   </header>
   <div class="actions">
+    <%= render NadaWeb.SharedView, "flash.html", assigns %>
     <%= form_tag(Routes.registration_path(@conn, :create), multipart: true) do %>
       <input type="email" name="user[email]" placeholder="Email" required="true" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
       <label class="file" for="user_file">

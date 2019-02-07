@@ -39,7 +39,6 @@ defmodule NadaWeb.Router do
     post "/login", SessionController, :create
     get "/login/complete/:otp", SessionController, :complete
     get "/logout", SessionController, :destroy
-    get "/login/face", SessionController, :face_id
   end
 
   scope "/", NadaWeb do

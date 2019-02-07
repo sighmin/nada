@@ -95,6 +95,19 @@ defmodule Nada.MappingTest do
     assert jim == Mapping.find_by_email(jim.email)
   end
 
+  test "find_user returns first matching user" do
+    bob = User.new(%{"email" => "bob@example.com", "face_id" => "bob"})
+    jim = User.new(%{"email" => "jim@example.com", "face_id" => "jim"})
+    eeb = User.new(%{"email" => "eeb@example.com"})
+
+    Mapping.add(bob)
+    Mapping.add(jim)
+
+    assert bob == Mapping.find_user(bob)
+    assert jim == Mapping.find_user(jim)
+    assert nil == Mapping.find_user(eeb)
+  end
+
   test "update removes the existing user and adds the new one" do
     bob = User.new(%{"email" => "bob@example.com"})
     new_bob = %{bob | otp: "abc123"}
