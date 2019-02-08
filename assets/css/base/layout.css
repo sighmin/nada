@@ -61,8 +61,8 @@ footer p {
     margin-top: -50px;
     padding-bottom: 50px;
   }
-  footer p {
-    font-size: var(--font-size-x-small);
+  footer {
+    display: none;
   }
 }
 

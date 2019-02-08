@@ -25,10 +25,8 @@ defmodule Nada.Registration do
         {:ok, new_user}
       {nil, confidence} when confidence < @registration_confidence ->
         {:error, "Can't use that face."}
-      {user, _confidence} ->
+      {_user, _confidence} ->
         {:error, "User email or face already taken."}
-      {_, _} ->
-        {:error, "Something went wrong."}
     end
   end
 
