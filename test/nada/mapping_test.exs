@@ -3,9 +3,7 @@ defmodule Nada.MappingTest do
   alias Nada.{Mapping,User}
 
   setup do
-    on_exit fn ->
-      Mapping.flush()
-    end
+    on_exit &Mapping.flush/0
     :ok
   end
 

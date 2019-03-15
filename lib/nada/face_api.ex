@@ -41,13 +41,9 @@ defmodule Nada.FaceApi.Live do
   end
 
   defp request(url, params) do
-    case HTTPoison.post(url, params, headers()) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        {:ok, Poison.decode!(body)}
-      {:error, %HTTPoison.Error{reason: reason}} ->
-        IO.inspect(reason)
-        {:error, reason}
-    end
+    Nada.HTTP.post(url, params, fn body ->
+      Poison.decode!(body)
+    end)
   end
 
   defp build_url(endpoint) do
@@ -62,12 +58,5 @@ defmodule Nada.FaceApi.Live do
         "file_id" => file_id
       }
     })
-  end
-
-  defp headers do
-    [
-      {"Content-Type", "application/json"},
-      {"Accept", "Application/json; Charset=utf-8"}
-    ]
   end
 end
