@@ -16,40 +16,30 @@ defmodule Nada.Mapping do
     end)
   end
 
-  def get() do
+  def get do
     Agent.get(@name, fn state -> state end)
   end
 
-  def update(user) do
-    # find user in the mapping
-    old_user = find_by(fn(u) ->
-      u.email == user.email
-    end)
-    # remove that user
+  def update(%{email: email} = new_user) do
     Agent.update(@name, fn(list) ->
-      List.delete(list, old_user)
+      for user <- list,
+        user.email != email,
+        do: user,
+        into: [new_user]
     end)
-    # add this updated user
-    add(user)
-    user
+    new_user
   end
 
   def find_by_token(token) do
-    find_by(fn(user) ->
-      user.token == token
-    end)
+    find_by(token: token)
   end
 
   def find_by_otp(otp) do
-    find_by(fn(user) ->
-      user.otp == otp
-    end)
+    find_by(otp: otp)
   end
 
   def find_by_email(email) do
-    find_by(fn(user) ->
-      user.email == email
-    end)
+    find_by(email: email)
   end
 
   def find_by_file(file) do
@@ -59,9 +49,7 @@ defmodule Nada.Mapping do
   end
 
   def find_by_face_id(face_id) do
-    find_by(fn(user) ->
-      user.face_id == face_id
-    end)
+    find_by(face_id: face_id)
   end
 
   def find_user(new_user) do
@@ -75,6 +63,10 @@ defmodule Nada.Mapping do
     Agent.update(__MODULE__, fn _state ->
       []
     end)
+  end
+
+  defp find_by([{param, value}]) do
+    find_by(fn (user) -> Map.get(user, param) == value end)
   end
 
   defp find_by(block) do
