@@ -8,6 +8,12 @@ repo and should be good to go. Otherwise make sure you have:
 * Elixir 1.7.4+
 * Erlang 21+
 * NodeJS 11.2+
+* chromedriver (`brew install chromedriver`)
+
+Grab the environment variables:
+
+* `heroku config > .env` modify the file to export env vars
+* `source .env`
 
 To start your Phoenix server:
 
